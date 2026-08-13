@@ -96,12 +96,12 @@
   .destino-row input { flex: 1; }
 </style>
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9LPLE99YX"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MK3CRM120"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag("js", new Date());
-    gtag("config", "G-T9LPLE99YX");
+    gtag("config", "G-6MK3CRM120");
   </script>
   <meta property="og:title" content="CPool">
   <meta property="og:description" content="Comunidad en movimiento">
@@ -305,7 +305,7 @@
     <button class="btn-crear" onclick="crearEvento()">Crear CPool →</button>
     <div style="display:flex;gap:16px;justify-content:center"><div class="privacidad-link" onclick="document.getElementById('modalPrivacidad').classList.add('visible')">Privacidad</div><div class="privacidad-link" onclick="document.getElementById('modalInstrucciones').classList.add('visible')">Instrucciones</div></div>
     <div style="text-align:center;font-size:10px;color:rgba(232,132,90,0.6);padding:4px 0;letter-spacing:0.03em">Powered by VertexSur</div>
-    <div class="version">v0.15</div>
+    <div class="version">v0.16</div>
   </div>
 </div>
 
@@ -321,7 +321,7 @@
   <button class="btn-copiar" id="btnCopiar" onclick="copiarLink()">📋 Copiar link para compartir</button>
   <div style="display:flex;gap:16px;justify-content:center"><div class="privacidad-link" onclick="document.getElementById('modalPrivacidad').classList.add('visible')">Privacidad</div><div class="privacidad-link" onclick="document.getElementById('modalInstrucciones').classList.add('visible')">Instrucciones</div></div>
   <div style="text-align:center;font-size:10px;color:rgba(232,132,90,0.6);padding:4px 0;letter-spacing:0.03em">Powered by VertexSur</div>
-  <div class="version">v0.15</div>
+  <div class="version">v0.16</div>
 </div>
 
 <div class="modal-overlay" id="modalPrivacidad">
@@ -394,7 +394,10 @@ async function crearEvento() {
 }
 
 function mostrarExito(nombre, destino, fecha, hora_ida, hora_vuelta, proposito, token) {
-  linkGenerado = `${window.location.origin}/pool/${token}`;
+  // PENDIENTE — nombre dinámico en preview de WhatsApp (Netlify Functions / og:title por pool):
+  // requiere backend, ver opción B (Cloudflare Worker) evaluada en Pool Manager V.
+  // linkGenerado = `${window.location.origin}/pool/${token}`;
+  linkGenerado = `${window.location.origin}/cpool.html?token=${token}`;
   document.getElementById('preview-nombre').textContent = nombre;
   let meta = formatFecha(fecha);
   if (destino) meta += ` · ${destino}`;
